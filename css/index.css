@@ -1,0 +1,278 @@
+html,
+div,
+body,
+canvas {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+    -webkit-app-region: drag;
+    background: black;
+    overflow: hidden;
+}
+
+#container {
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
+    text-align: center;
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    -webkit-transition: 1s opacity;
+    background: black;
+    -webkit-app-region: no-drag;
+}
+
+myColor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transition: 1s opacity;
+    background: black;
+    -webkit-app-region: no-drag;
+}
+
+splash {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0vh;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: url(../images/splash.jpg);
+    background-size: 100vw 100vh;
+    background-color: black;
+    opacity: 1.0;
+    z-index: 1001;
+    -webkit-app-region: no-drag;
+}
+
+#main {
+    position: relative;
+    background: black;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.invisible {
+    -webkit-transition: 0s opacity;
+    opacity: 0;
+}
+
+buttonMenu {
+    position: absolute;
+    top: 2vh;
+    left: 1vw;
+    width: 10vh;
+    height: 10vh;
+    border-radius: 0vh;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background: url(../images/menu.png);
+    background-size: 10vh 10vh;
+    z-index: 1000;
+    opacity: 0.8;
+    -webkit-app-region: no-drag;
+}
+
+buttonMenu:hover {
+    opacity: 1.0;
+}
+
+buttonMenu:active {
+    opacity: 0.2;
+}
+
+buttonStyle {
+    position: absolute;
+    top: 22vh;
+    left: 1vw;
+    width: 10vh;
+    height: 10vh;
+    border-radius: 0vh;
+    border: 1px none;
+    outline: none;
+    cursor: pointer;
+    background: url(../images/style.png);
+    background-size: 10vh 10vh;
+    z-index: 1000;
+    opacity: 0.8;
+    -webkit-app-region: no-drag;
+}
+
+buttonStyle:hover {
+    opacity: 1.0;
+}
+
+buttonStyle:active {
+    opacity: 0.2;
+}
+
+buttonSize {
+    position: absolute;
+    top: 42vh;
+    left: 1vw;
+    width: 10vh;
+    height: 10vh;
+    border-radius: 0vh;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: url(../images/size2.png);
+    background-size: 10vh 10vh;
+    z-index: 1000;
+    opacity: 0.8;
+    -webkit-app-region: no-drag;
+}
+
+buttonSize:hover {
+    opacity: 1.0;
+}
+
+buttonSize:active {
+    opacity: 0.2;
+}
+
+buttonColour {
+    position: absolute;
+    top: 62vh;
+    left: 1vw;
+    width: 10vh;
+    height: 10vh;
+    border-radius: 0vh;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: url(../images/colourf.png);
+    background-size: 10vh 10vh;
+    z-index: 1000;
+    opacity: 0.8;
+    -webkit-app-region: no-drag;
+}
+
+buttonColour:hover {
+    opacity: 1.0;
+}
+
+buttonColour:active {
+    opacity: 0.2;
+}
+
+buttonColourb {
+    position: absolute;
+    top: 82vh;
+    left: 1vw;
+    width: 10vh;
+    height: 10vh;
+    border-radius: 0vh;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: url(../images/colourb.png);
+    background-size: 10vh 10vh;
+    z-index: 1000;
+    opacity: 0.8;
+    -webkit-app-region: no-drag;
+}
+
+buttonColourb:hover {
+    opacity: 1.0;
+}
+
+buttonColourb:active {
+    opacity: 0.2;
+}
+
+buttonPicture {
+    position: absolute;
+    top: 2vh;
+    left: -25vw;
+    width: 10vh;
+    height: 10vh;
+    border-radius: 0vh;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: url(../images/camera.png);
+    background-size: 10vh 10vh;
+    z-index: 1000;
+    opacity: 0.8;
+    -webkit-app-region: no-drag;
+}
+
+buttonPicture:hover {
+    opacity: 1.0;
+}
+
+buttonPicture:active {
+    opacity: 0.2;
+}
+
+buttonFlip {
+    position: absolute;
+    top: 2vh;
+    left: -55vw;
+    width: 10vh;
+    height: 10vh;
+    border-radius: 0vh;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: url(../images/flip.png);
+    background-size: 10vh 10vh;
+    z-index: 1000;
+    opacity: 0.8;
+    -webkit-app-region: no-drag;
+}
+
+buttonFlip:hover {
+    opacity: 1.0;
+}
+
+buttonFlip:active {
+    opacity: 0.2;
+}
+
+buttonLight {
+    position: absolute;
+    top: 2vh;
+    left: -85vw;
+    width: 10vh;
+    height: 10vh;
+    border-radius: 0vh;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: url(../images/light.png);
+    background-size: 10vh 10vh;
+    z-index: 1000;
+    opacity: 0.8;
+    -webkit-app-region: no-drag;
+}
+
+buttonLight:hover {
+    opacity: 1.0;
+}
+
+buttonLight:active {
+    opacity: 0.2;
+}

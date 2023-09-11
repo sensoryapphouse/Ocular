@@ -1,0 +1,32 @@
+{
+    "name": "Ocula PWA",
+    "short_name": "Ocula",
+    "icons": [{
+        "src": "images/fotofrez-128.png",
+        "sizes": "128x128",
+        "type": "image/png"
+    }, {
+        "src": "images/fotofrez-144.png",
+        "sizes": "144x144",
+        "type": "image/png"
+    }, {
+        "src": "images/fotofrez-152.png",
+        "sizes": "152x152",
+        "type": "image/png"
+    }, {
+        "src": "images/fotofrez-192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+    }, {
+        "src": "images/fotofrez-256.png",
+        "sizes": "256x256",
+        "type": "image/png"
+    }, {
+        "src": "images/fotofrez-512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+    }],
+    "lang": "en-US",
+    "start_url": "./index.html",
+    "display": "standalone"
+}

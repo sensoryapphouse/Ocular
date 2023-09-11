@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ocula - webcam viewer</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="apple-touch-icon" href="images/FotoFrez-128.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="user-scalable=0">
+    <link href="css/index.css" rel="stylesheet" />
+    <script type="text/javascript" src="glMatrix-0.9.5.min.js"></script>
+    <script type="text/javascript" src="webgl-utils.js"></script>
+    <script type="text/javascript" src="js/jscolor.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+
+    <script id="shader-1-fs" type="f"> // magnifying glass
+precision mediump float;
+varying vec2 vTextureCoord;
+uniform sampler2D texture0;
+uniform vec2 resolution;
+uniform vec2 mouse;
+uniform int index;
+uniform float time;
+uniform vec3 Param1; // foreground colour tint
+uniform vec3 Param2; // background colour tint
+uniform float Param3; // strip size
+uniform float Param4; // strip style: full screen, strip, bottom strip //, double height strip
+
+void main(void)
+{
+    mediump vec2 cent = vec2(0.5, 0.5);
+    vec2 xy = gl_FragCoord.xy /resolution.xy;//Condensing this into one line
+  //  xy = vec2(1.0-xy);
+  xy.y = 1.0-xy.y;
+    vec2 uv = xy;
+    float zoom = 1.0;
+    float limit = .5 - .5 / zoom;
+    float offset_x = cent.x / resolution.x;
+    float offset_y = cent.y / resolution.y+limit;
+    xy = vec2(offset_x + xy.x , offset_y + xy.y / zoom);
+    
+    vec4 texColor = texture2D(texture0,xy);
+    
+    float Param = 0.25; // set height of strip
+    if (Param3 == 0.)
+        Param = .2;
+    else if (Param3 == 1.)
+        Param = .35;
+    else if (Param3 == 2.)
+        Param = .3;
+    else if (Param3 == 3.)
+        Param = .25;
+        
+    bool doneColour = false;
+    
+    if (Param4 == 0. && uv.y < Param) {
+        texColor.xyz *= Param2;
+        doneColour = true;
+    }
+    if (Param4 <= 1. && (uv.y > 1.0-Param)) {
+        texColor.xyz *= Param2;
+        doneColour = true;
+    }
+    if (!doneColour)
+        texColor.xyz *= Param1;
+
+    gl_FragColor = texColor;
+}
+
+</script>
+
+    <script id="shader-vs" type="v">
+        attribute vec3 aVertexPosition;
+    attribute vec2 aTextureCoord;
+
+    uniform mat4 uMVMatrix;
+    uniform mat4 uPMatrix;
+
+    varying vec2 vTextureCoord;
+
+    void main(void) {
+        gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+        vTextureCoord = aTextureCoord;
+    }
+</script>
+</head>
+
+<div id="container">
+    <div id="main">
+        <canvas id="webgl-canvas"></canvas>
+        <splash class="btn" enabled></splash>
+        <buttonPicture></buttonPicture>
+        <buttonColour></buttonColour>
+        <buttonColourb></buttonColourb>
+        <input class="color" id="myColor"> </input>
+        <buttonMenu></buttonMenu>
+        <buttonFlip></buttonFlip>
+        <buttonLight></buttonLight>
+        <buttonSize></buttonSize>
+        <buttonStyle></buttonStyle>
+    </div>
+</div>
+</body>
+
+</html>
